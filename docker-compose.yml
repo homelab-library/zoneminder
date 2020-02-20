@@ -22,6 +22,10 @@ services:
     hostname: proctor.home
     privileged: true
     shm_size: 1g
+    environment:
+      ZM_DB_USER: root
+      ZM_DB_PASS: zoneminder
+      ZM_DB_HOST: mariadb.apps
     networks:
       - zm_network
     volumes:
