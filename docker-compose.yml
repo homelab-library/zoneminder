@@ -1,5 +1,5 @@
 ---
-version: "3.7"
+version: '3.7'
 networks:
   zm_network:
 volumes:
@@ -29,10 +29,10 @@ services:
     networks:
       - zm_network
     volumes:
-      - "php-sock:/run/php"
-      - "zm-php:/usr/share/zoneminder/www"
-      - "zm-cgi:/usr/lib/zoneminder/cgi-bin"
-      - "zm-cache:/var/cache/zoneminder/cache"
+      - 'php-sock:/run/php'
+      - 'zm-php:/usr/share/zoneminder/www'
+      - 'zm-cgi:/usr/lib/zoneminder/cgi-bin'
+      - 'zm-cache:/var/cache/zoneminder/cache'
   app.nginx:
     image: nginx
     container_name: nginx
@@ -41,11 +41,12 @@ services:
     networks:
       - zm_network
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
-      - "php-sock:/var/socks/zoneminder"
-      - "zm-php:/usr/share/zoneminder/www"
-      - "zm-cgi:/usr/lib/zoneminder/cgi-bin"
-      - "zm-cache:/var/cache/zoneminder/cache"
-      - "$PWD/default.conf:/etc/nginx/conf.d/default.conf"
+      - 'php-sock:/var/socks/zoneminder'
+      - 'zm-php:/usr/share/zoneminder/www'
+      - 'zm-cgi:/usr/lib/zoneminder/cgi-bin'
+      - 'zm-cache:/var/cache/zoneminder/cache'
+      - '$PWD:/run/test:ro'
+      - '$PWD/default.conf:/etc/nginx/conf.d/default.conf'

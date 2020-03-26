@@ -36,8 +36,9 @@ setup_db() {
 }
 
 prep_zoneminder() {
+    mkdir -p /run/php /run/zm
     rm -f /run/php/* /run/zm/*
-    chown -Rf www-data:www-data /run
+    chown -R www-data:www-data /run/php /run/zm
     rm -f /usr/share/zoneminder/www/tools/mootools/*
     cp -rf /usr/share/javascript/mootools/* /usr/share/zoneminder/www/tools/mootools/
     ln -sf /usr/share/zoneminder/www/tools/mootools/mootools-core.min.js /usr/share/zoneminder/www/tools/mootools/mootools-core.js
