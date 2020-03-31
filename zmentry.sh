@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+FCGI_FORK_COUNT="${ZMS_THREADS:-10}"
 echo "ZM_DB_USER=${ZM_DB_USER}" >/etc/zm/conf.d/03-db.conf
 echo "ZM_DB_PASS=${ZM_DB_PASS}" >>/etc/zm/conf.d/03-db.conf
 echo "ZM_DB_HOST=${ZM_DB_HOST}" >>/etc/zm/conf.d/03-db.conf
@@ -56,7 +57,7 @@ start_fpm() {
 }
 
 start_cgi() {
-    su www-data --shell /bin/bash --command 'fcgiwrap -s unix:/run/php/fcgiwrap.sock' &
+    su www-data --shell /bin/bash --command "fcgiwrap -s unix:/run/php/fcgiwrap.sock -c ${FCGI_FORK_COUNT}" &
     while [ ! -S /run/php/fcgiwrap.sock ]; do
         echo "Waiting for fcgiwrap socket..."
         sleep 1

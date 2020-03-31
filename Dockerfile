@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -yy \
 
 ENV ZM_DB_USER='root' \
     ZM_DB_PASS='zoneminder' \
-    ZM_DB_HOST='mariadb.apps'
+    ZM_DB_HOST='mariadb.apps' \
+    ZMS_THREADS='10'
 
 COPY zmentry.sh /
 
