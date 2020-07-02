@@ -12,7 +12,7 @@ if [ $? -eq 1 ]; then
     echo "Done!"
 else
     SUCCESS=0
-    echo "Database already exists, skipping provisioning..."
+    echo "Database already exists"
 fi
 
 if [ $SUCCESS -ne 0 ]; then

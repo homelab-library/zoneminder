@@ -15,8 +15,8 @@ services:
 
   zoneminder.apps:
     container_name: zoneminder
-    # build: .
-    image: 1e5616af922a
+    build: .
+    # image: 1e5616af922a
     restart: unless-stopped
     hostname: proctor.home
     privileged: true
