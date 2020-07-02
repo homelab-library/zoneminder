@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+su www-data --shell /bin/bash --command "fcgiwrap -s unix:/run/php/fcgiwrap.sock -c 10"

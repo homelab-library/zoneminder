@@ -11,11 +11,11 @@ server {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $request_filename;
         fastcgi_param HTTP_PROXY "";
-        fastcgi_pass unix:/var/socks/zoneminder/fcgiwrap.sock;
+        fastcgi_pass unix:/run/php/fcgiwrap.sock;
     }
 
     location /zm/cache {
-        alias /var/cache/zoneminder/cache;
+        alias /var/cache/zoneminder;
     }
 
     location ~ /zm/api/(css|img|ico) {
@@ -34,7 +34,7 @@ server {
             fastcgi_param SCRIPT_FILENAME $request_filename;
             fastcgi_param HTTP_PROXY "";
             fastcgi_index index.php;
-            fastcgi_pass unix:/var/socks/zoneminder/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         }
     }
 
@@ -47,8 +47,7 @@ server {
             fastcgi_param SCRIPT_FILENAME $request_filename;
             fastcgi_param HTTP_PROXY "";
             fastcgi_index index.php;
-            fastcgi_pass unix:/var/socks/zoneminder/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         }
     }
 }
-

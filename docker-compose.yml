@@ -2,51 +2,31 @@
 version: '3.7'
 networks:
   zm_network:
-volumes:
-  php-sock:
-  zm-php:
-  zm-cgi:
-  zm-cache:
+
 services:
   mariadb.apps:
+    container_name: mysql
     image: mariadb:10.5
     restart: always
     networks:
       - zm_network
     environment:
       MYSQL_ROOT_PASSWORD: zoneminder
+
   zoneminder.apps:
     container_name: zoneminder
-    build: .
+    # build: .
+    image: 1e5616af922a
     restart: unless-stopped
     hostname: proctor.home
     privileged: true
     shm_size: 1g
+    ports:
+      - '80:80'
+      - '443:443'
     environment:
       ZM_DB_USER: root
       ZM_DB_PASS: zoneminder
       ZM_DB_HOST: mariadb.apps
     networks:
       - zm_network
-    volumes:
-      - 'php-sock:/run/php'
-      - 'zm-php:/usr/share/zoneminder/www'
-      - 'zm-cgi:/usr/lib/zoneminder/cgi-bin'
-      - 'zm-cache:/var/cache/zoneminder/cache'
-  app.nginx:
-    image: nginx
-    container_name: nginx
-    depends_on:
-      - zoneminder.apps
-    networks:
-      - zm_network
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - 'php-sock:/var/socks/zoneminder'
-      - 'zm-php:/usr/share/zoneminder/www'
-      - 'zm-cgi:/usr/lib/zoneminder/cgi-bin'
-      - 'zm-cache:/var/cache/zoneminder/cache'
-      - '$PWD:/run/test:ro'
-      - '$PWD/default.conf:/etc/nginx/conf.d/default.conf'
