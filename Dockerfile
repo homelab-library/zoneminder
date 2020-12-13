@@ -1,4 +1,4 @@
-FROM homelabs/base:sid
+FROM ghcr.io/homelab-library/base:sid
 
 RUN echo 'deb http://deb.debian.org/debian buster main' >> /etc/apt/sources.list && \
     apt-get update && apt-get install -yy --no-install-recommends \
@@ -17,6 +17,7 @@ COPY rootfs/ /
 ENV ZM_DB_USER='root' \
     ZM_DB_PASS='zoneminder' \
     ZM_DB_HOST='mariadb.apps' \
+    ZM_MULTISERVER=0 \
     TZ='America/New_York' \
     ZMS_THREADS='10' \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2
