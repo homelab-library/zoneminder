@@ -1,0 +1,14 @@
+---
+name: zoneminder
+display_name: Zoneminder
+options:
+  ZM_DB_USER: Username for the database
+  ZM_DB_PASS: Database password
+  ZM_DB_HOST: Database hostname
+
+upstream_link: 'https://www.keycloak.org/'
+description: |-
+  A full-featured, open source, state-of-the-art video surveillance software system.
+
+  Monitor your home, office, or wherever you want. Using off the shelf hardware with
+  any camera, you can design a system as large or as small as you need.
