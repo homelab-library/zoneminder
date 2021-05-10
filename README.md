@@ -17,7 +17,7 @@ This is packaged by homelab-library and is not maintained by the upstream projec
 
 ## About Zoneminder<a name="about-zoneminder"></a>
 
-[Zoneminder](https://www.keycloak.org/)
+[Zoneminder](https://zoneminder.com/)
 
 A full-featured, open source, state-of-the-art video surveillance software system.
 
@@ -26,8 +26,11 @@ any camera, you can design a system as large or as small as you need.
 
 ## Container Options<a name="container-options"></a>
 
-| Environment | Description               |
-| ----------- | ------------------------- |
-| ZM_DB_USER  | Username for the database |
-| ZM_DB_PASS  | Database password         |
-| ZM_DB_HOST  | Database hostname         |
+| Environment    | Description                            |
+| -------------- | -------------------------------------- |
+| ZM_DB_USER     | Username for the database              |
+| ZM_DB_PASS     | Database password                      |
+| ZM_DB_HOST     | Database hostname                      |
+| ZM_MULTISERVER | Set to '1' to enable multi-server mode |
+| ZMS_THREADS    | Concurrency count                      |
+| TZ             | Time Zone (default `America/New_York`) |

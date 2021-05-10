@@ -5,8 +5,11 @@ options:
   ZM_DB_USER: Username for the database
   ZM_DB_PASS: Database password
   ZM_DB_HOST: Database hostname
+  ZM_MULTISERVER: Set to '1' to enable multi-server mode
+  ZMS_THREADS: Concurrency count
+  TZ: Time Zone (default `America/New_York`)
 
-upstream_link: 'https://www.keycloak.org/'
+upstream_link: 'https://zoneminder.com/'
 description: |-
   A full-featured, open source, state-of-the-art video surveillance software system.
 
